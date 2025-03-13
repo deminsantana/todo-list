@@ -1,0 +1,50 @@
+.todo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border: 1px solid #25252b;
+  padding: 1rem;
+  color: #eeeeee;
+  line-height: 24px;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    button {
+      background: transparent;
+      cursor: pointer;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition-duration: 0.3s;
+
+      img {
+        width: 18px;
+        height: 18px;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    .botton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
+}

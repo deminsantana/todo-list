@@ -1,0 +1,14 @@
+<div *ngIf="todo" class="todo">
+  <div class="top">
+    <p *ngIf="todo?.createdAt">{{ todo.createdAt }}</p>
+    <button (click)="{}">
+      <img src="../../../assets/cross-mark-small.jpg" alt="cross">
+    </button>
+  </div>
+
+  <div class="botton">
+    <span>
+      {{ todo.description }}
+    </span>
+  </div>
+</div>
