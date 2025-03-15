@@ -1,0 +1,78 @@
+.selectContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 100%;
+  min-width: 200px;
+
+  .option-selected {
+    width: fit-content;
+  }
+
+  .select {
+    width: 100%;
+    color: white;
+    height: 40px;
+    border: 1px solid #29292f;
+    font-size: 14px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .withOpacity {
+      color: #ffffff30;
+    }
+
+    &:hover {
+      transition-duration: 0.3s;
+      filter: brightness(1.5);
+    }
+  }
+
+  .options {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 200px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #29292f;
+    z-index: 999;
+
+    .option {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 40px;
+      font-size: 14px;
+      color: white;
+      text-decoration: none;
+      background: #1E1F25;
+      padding: 10px 1rem;
+      font-weight: normal;
+      border-bottom: 1px solid #ffffff10;
+
+      &:last-child {
+        border: none;
+      }
+
+      &:hover {
+        font-weight: bold;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+
+  .options::-webkit-scrollbar {
+    width: 2px;
+    background: #251f2b;
+  }
+
+  .options::-webkit-scrollbar-thumb {
+    border: 3px solid #ffffff25;
+  }
+}
