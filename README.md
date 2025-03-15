@@ -1,59 +1,75 @@
-# ListTodo
+# TodoList: Una aplicación Angular para gestionar tareas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+Esta aplicación, desarrollada con Angular, permite gestionar una lista de tareas, incluyendo la creación, edición, eliminación, filtrado y marcado como completadas y pendientes.  Se ha priorizado la claridad, eficiencia y buenas prácticas de programación.
 
-## Development server
+## Características:
 
-To start a local development server, run:
+* **Interfaz de usuario sencilla e intuitiva:**  Permite una fácil interacción con la lista de tareas.
+* **Creación y edición de tareas:**  Un formulario con validaciones asegura la integridad de los datos.  Se pueden agregar tareas con título, descripción y estado (pendiente/completado).
+* **Marcar como completadas:**  Las tareas se pueden marcar como completadas seleccionando el Status en el Dropdown.
+* **Eliminación de tareas:**  Las tareas se pueden eliminar de la lista.
+* **Filtro de tareas:**  Permite filtrar la lista para mostrar solo tareas pendientes, completadas o todas.
+* **Manejo de datos con servicios de Angular:**  La lógica de negocio está encapsulada en servicios para una mejor organización y mantenibilidad.
+* **Estilos básicos con CSS:**  Se han aplicado estilos CSS para una presentación limpia y consistente.
 
-```bash
-ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Instalación y ejecución:
 
-## Code scaffolding
+1. **Clonar el repositorio:**
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+   ```bash
+   git clone https://github.com/deminsantana/todo-list.git
 
-```bash
-ng generate component component-name
-```
+2. **Navegar al directorio del proyecto:**
+  ```bash
+  cd todo-list
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. **Instalar las dependencias:**
+  ```bash
+  npm install
 
-```bash
-ng generate --help
-```
+4. **Ejecutar la aplicación:**
+  ```bash
+  ng serve o npm start
 
-## Building
+Esto iniciará un servidor de desarrollo. Abre tu navegador y visita http://localhost:4200/. La aplicación se recargará automáticamente cada vez que guardes cambios en los archivos fuente.
 
-To build the project run:
+## Validaciones del formulario:
+  El formulario de creación/edición de tareas incluye las siguientes validaciones:
+    `*` Título: Campo requerido.
+    `*` Descripción: Campo requerido.
 
-```bash
-ng build
-```
+## Tecnologías utilizadas:
+  `*` Angular: Framework de desarrollo frontend.
+  `*` TypeScript: Lenguaje de programación.
+  `*` HTML: Lenguaje de marcado.
+  `*` CSS: Lenguaje de estilo.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Estructura del proyecto:
+  `*` src/app/components/: Contiene los componentes de la interfaz de usuario:
+      `+` dropdown.component.ts: Este componente es un dropdown o menú desplegable genérico.
+      `+` todo-filters.component.ts: es el encargado de filtrar la lista de tareas.
+      `+` todo-form.component.ts: es el formulario para crear o editar una tarea.
+      `+` todo-list.component.ts: es el encargado de mostrar la lista de tareas.
+      `+` todo-list-item.component.ts: es el encargado de mostrar una única tarea en la lista y sus detalles.
+      `+` todo-orders.component.ts: es el encargado de ordenar la lista de tareas.
 
-## Running unit tests
+  `*` src/app/config/: contiene la configuración de la interfaz de usuario:
+      `+` options.ts: Define las opciones del formulario, de filtrado y de ordenamiento.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+  `*` src/app/interfaces/: Contiene la estructura de los datos que se utilizan en la aplicación:
+      `+` todos.interfaces.ts: Se encarga de asegurar la consistencia de los datos (tipado), definiendo la estructura de una tarea.
 
-```bash
-ng test
-```
+  `*` src/app/pipes/: Los Pipes permiten transformar los datos:
+      `+` date.pipe.ts: Se encarga de formateo de fechas.
 
-## Running end-to-end tests
+  `*` src/app/services/: Contiene los servicios para la lógica de negocio y la gestión de datos:
+      `+` todos.service.ts: Tiene la responsabilidad del CRUD, almacenamiento de datos, filtrado y ordenamiento, comunicación con los componentes.
 
-For end-to-end (e2e) testing, run:
+  `*` src/app/utils/: Contiene las utilidades y funciones auxiliares:
+      `+` traductions.ts: Almacena los textos que se muestran en la interfaz de usuario.
 
-```bash
-ng e2e
-```
+  `*` src/assets/: Contiene las imagenes de la aplicación.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Contribuciones:
+Las contribuciones son bienvenidas. Por favor, abre un issue para reportar errores o solicitar nuevas funcionalidades.
