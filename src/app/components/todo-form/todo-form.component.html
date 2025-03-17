@@ -1,22 +1,54 @@
-<form class="todo-form" (ngSubmit)="addTodo()">
-  <h2>Nueva Tarea</h2>
-
-  <div class="form-group">
-    <label for="description">Descripción:</label>
-    <input
-      type="text"
-      name="description"
-      id="description"
-      [(ngModel)]="newTodoDescription"
-      autocomplete="off"
-    />
+<form class="todo-form" [formGroup]="todoForm" (ngSubmit)="addTodo()">
+  <div class="form-header">
+    <h2>Nueva Tarea</h2>
+    <button type="submit">Agregar</button>
   </div>
 
-  <div class="form-group">
-    <label for="description">Estado:</label>
-    <app-dropdown [options]="statusOptions" [optionSelected]="newTodoStatus" (onSelect)="changeStatus($event)"/>
+  <div class="form-container">
+    <div class="form-group title-field">
+      <label for="title">Título:</label>
+      <input
+        type="text"
+        id="title"
+        formControlName="title"
+        autocomplete="off"
+        placeholder="Ingresa el título"
+        [ngClass]="{'is-invalid': (submitted || f['title'].touched) && f['title'].errors}"
+      />
+      <div *ngIf="(submitted || f['title'].touched) && f['title'].errors" class="error-message">
+        <span *ngIf="f['title'].errors['required']">El título es obligatorio</span>
+        <span *ngIf="f['title'].errors['minlength']">Mín. 3 caracteres</span>
+        <span *ngIf="f['title'].errors['maxlength']">Máx. 50 caracteres</span>
+        <span *ngIf="f['title'].errors['whitespace']">Sin espacios al inicio/final</span>
+      </div>
+    </div>
+
+    <div class="form-group description-field">
+      <label for="description">Descripción:</label>
+      <input
+        type="text"
+        id="description"
+        formControlName="description"
+        autocomplete="off"
+        placeholder="Ingresa la descripción"
+        [ngClass]="{'is-invalid': (submitted || f['description'].touched) && f['description'].errors}"
+      />
+      <div *ngIf="(submitted || f['description'].touched) && f['description'].errors" class="error-message">
+        <span *ngIf="f['description'].errors['required']">La descripción es obligatoria</span>
+        <span *ngIf="f['description'].errors['minlength']">Mín. 3 caracteres</span>
+        <span *ngIf="f['description'].errors['maxlength']">Máx. 100 caracteres</span>
+        <span *ngIf="f['description'].errors['whitespace']">Sin espacios al inicio/final</span>
+      </div>
+    </div>
+
+    <div class="form-group status-dropdown">
+      <label for="status">Estado:</label>
+      <app-dropdown
+        class="form-status-dropdown"
+        [options]="statusOptions"
+        [optionSelected]="newTodoStatus"
+        (onSelect)="changeStatus($event)"
+      />
+    </div>
   </div>
-
-  <button type="submit">Agregar Tarea</button>
-
 </form>

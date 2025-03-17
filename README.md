@@ -38,6 +38,11 @@ Esto iniciará un servidor de desarrollo. Abre tu navegador y visita http://loca
   El formulario de creación/edición de tareas incluye las siguientes validaciones:
     `*` Título: Campo requerido.
     `*` Descripción: Campo requerido.
+    Ambos campos usar formularios reactivos con las validaciones siguientes:
+      `+` Validación de campo requerido
+      `+` Validación de longitud mínima (3 caracteres)
+      `+` Validación de longitud máxima (100 caracteres)
+      `+` Validación personalizada para evitar espacios en blanco al principio y al final
 
 ## Tecnologías utilizadas:
   `*` Angular: Framework de desarrollo frontend.

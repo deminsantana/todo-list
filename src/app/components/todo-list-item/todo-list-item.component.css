@@ -7,6 +7,8 @@
   padding: 1rem;
   color: #eeeeee;
   line-height: 24px;
+  position: relative;
+  overflow: visible;
 
   .top {
     display: flex;
@@ -40,11 +42,56 @@
 
   .botton {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 
-    span {
-      font-size: 14px;
+    .todo-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 75%;
+
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        color: #ffffff;
+      }
+
+      p {
+        font-size: 14px;
+        margin: 0;
+        color: #cccccc;
+      }
+    }
+
+    .dropdown-container {
+      position: relative;
+      min-width: 120px;
+      z-index: 50;
     }
   }
+}
+
+:host ::ng-deep .dropdown-container .selectContainer {
+  min-width: 0 !important;
+  z-index: 50 !important;
+}
+
+:host ::ng-deep .dropdown-container .select {
+  height: 32px !important;
+  padding: 0 0.5rem !important;
+}
+
+:host ::ng-deep .dropdown-container .options {
+  position: absolute !important;
+  z-index: 999 !important;
+  margin-top: 32px !important;
+  min-width: 100% !important;
+  width: max-content !important;
+  max-width: 200px !important;
+  right: 0 !important;
+  left: auto !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4) !important;
+  background-color: #1E1F25 !important;
 }

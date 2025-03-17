@@ -55,7 +55,7 @@ export class TodosService {
 
   public changeTodoStatus(todoId: Todo['id'], newStatus: TodoStatus) {
     const todoIndex = this.todos.findIndex((todo) => todo.id === todoId);
-    if(todoIndex !== -1) return;
+    if(todoIndex === -1) return;
     this.todos[todoIndex].status = newStatus;
     this.update();
   }

@@ -5,6 +5,7 @@
   cursor: pointer;
   width: 100%;
   min-width: 200px;
+  z-index: 10;
 
   .option-selected {
     width: fit-content;
@@ -32,16 +33,25 @@
   }
 
   .options {
-    position: fixed;
+    position: absolute;
     display: flex;
     flex-direction: column;
     margin-top: 40px;
-    width: 200px;
+    min-width: 100%;
+    width: max-content;
+    max-width: 250px;
     max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid #29292f;
+    background-color: #1E1F25;
     z-index: 999;
+    right: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    top: 0;
+    &:not(:last-child) {
+      margin-bottom: 1px;
+    }
 
     .option {
       display: flex;
@@ -63,16 +73,18 @@
       &:hover {
         font-weight: bold;
         transition-duration: 0.3s;
+        background-color: #2a2a30;
       }
     }
   }
 
   .options::-webkit-scrollbar {
-    width: 2px;
+    width: 4px;
     background: #251f2b;
   }
 
   .options::-webkit-scrollbar-thumb {
-    border: 3px solid #ffffff25;
+    background-color: #444;
+    border-radius: 4px;
   }
 }

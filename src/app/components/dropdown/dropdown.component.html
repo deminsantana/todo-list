@@ -8,7 +8,6 @@
     <app-arrow [open]="open"/>
   </div>
   <div class="options" *ngIf="open">
-
     <div
       *ngFor="let option of options"
       class="option"
@@ -18,7 +17,7 @@
         {{ option.name }}
       </span>
     </div>
-
+  </div>
 </div>
 
 <ng-template #placeholderTemplate>

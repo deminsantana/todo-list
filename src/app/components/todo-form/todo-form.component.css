@@ -1,22 +1,108 @@
 .todo-form {
-  margin: 1rem 0;
-  padding: 1rem;
+  margin: 0.6rem 0;
+  padding: 0.75rem;
   background-color: black;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 4px;
+  position: relative;
+  overflow: visible;
 }
 
-.form group {
+.form-header {
   display: flex;
-  /* flex-wrap: wrap; */
-  gap: 1rem;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.3rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  button {
+    background: transparent;
+    border: 1px solid #ffffff90;
+    color: white;
+    padding: 0.35rem 0.7rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition-duration: 0.3s;
+    border-radius: 4px;
+    font-size: 0.85rem;
+
+    &:hover {
+      background-color: #29292f;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-color: #29292f;
+    }
+  }
+}
+
+.form-container {
+  display: grid;
+  grid-template-columns: 180px 1fr 120px;
+  gap: 0.7rem;
+  width: 100%;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .form-container {
+    grid-template-columns: minmax(150px, 180px) 1fr; /* Título ajustable, descripción ocupa el resto */
+    grid-template-areas:
+      "title description"
+      "status status"; /* El estado ocupará toda la fila inferior */
+  }
+
+  .title-field {
+    grid-area: title;
+  }
+
+  .description-field {
+    grid-area: description;
+  }
+
+  .status-dropdown {
+    grid-area: status;
+    justify-self: start; /* Alineamos a la izquierda en pantalla pequeña */
+    width: 150px; /* Un poco más ancho en pantallas pequeñas para mejor usabilidad */
+  }
+}
+
+/* Media query para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .form-container {
+    grid-template-columns: 1fr; /* Una sola columna */
+    grid-template-areas:
+      "title"
+      "description"
+      "status"; /* Cada campo en su propia fila */
+  }
+}
+
+/* Media query para pantallas medianas donde queremos ajustar el layout */
+@media (max-width: 992px) and (min-width: 769px) {
+  .form-container {
+    grid-template-columns: 160px 1fr 120px; /* Título un poco más pequeño en pantallas medianas */
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
 
   label {
-    font-size: 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
   }
 
   input {
@@ -24,23 +110,62 @@
     border: none;
     outline: none;
     border: 1px solid #29292f;
-    padding: 0.4rem;
+    padding: 0.35rem 0.5rem;
     color: white;
+    transition: border-color 0.3s ease;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  input.ng-invalid.ng-touched,
+  input.is-invalid {
+    border-color: #ff4d4f;
+  }
+
+  .error-message {
+    color: #ff4d4f;
+    font-size: 0.7rem;
+    margin-top: 0.1rem;
   }
 }
 
-button {
-  background-color: #29292f;
-  border: none;
-  border: 1px solid #fff;
-  color: white;
-  height: 100%;
-  padding: 1rem;
-  cursor: pointer;
-  font-weight: 500;
-  transition-duration: 0.3s;
+.status-dropdown {
+  min-width: 0;
+  width: 120px;
+  justify-self: flex-end;
+  z-index: 50;
+  position: relative;
+}
 
-  &:hover {
-    background-color: #29292f;
-  }
+/* Estilos específicos para el dropdown de estado en el formulario */
+:host ::ng-deep .status-dropdown .selectContainer {
+  min-width: 0 !important;
+}
+
+:host ::ng-deep .status-dropdown .select {
+  height: 30px !important;
+  padding: 0 0.5rem !important;
+  font-size: 0.85rem !important;
+}
+
+:host ::ng-deep .status-dropdown .options {
+  position: absolute !important;
+  z-index: 999 !important;
+  margin-top: 30px !important;
+  min-width: 100% !important;
+  width: max-content !important;
+  max-width: 150px !important;
+  right: 0 !important;
+  left: auto !important;
+}
+
+/* Estilos específicos para los campos */
+.title-field {
+  /* No necesitamos estilos adicionales ya que el grid ya establece su ancho */
+}
+
+.description-field {
+  /* Aseguramos que se expanda adecuadamente */
+  width: 100%;
 }

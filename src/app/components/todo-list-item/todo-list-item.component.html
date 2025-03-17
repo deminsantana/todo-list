@@ -7,18 +7,30 @@
   </div>
 
   <div class="botton">
-    <span
-      [ngStyle]="{
-        'text-decoration': todo.status === 'completado' ? 'line-through' : 'none'
-      }"
-    >
-      {{ todo.description }}
-    </span>
+    <div class="todo-content">
+      <h3
+        [ngStyle]="{
+          'text-decoration': todo.status === 'completado' ? 'line-through' : 'none'
+        }"
+      >
+        {{ todo.title }}
+      </h3>
+      <p
+        [ngStyle]="{
+          'text-decoration': todo.status === 'completado' ? 'line-through' : 'none'
+        }"
+      >
+        {{ todo.description }}
+      </p>
+    </div>
 
-    <app-dropdown
-      [options]="statusOptions"
-      [optionSelected]="optionSelected"
-      (onSelect)="(changeStatus($event))"
-    />
+    <div class="dropdown-container">
+      <app-dropdown
+        class="todo-status-dropdown"
+        [options]="statusOptions"
+        [optionSelected]="optionSelected"
+        (onSelect)="changeStatus($event)"
+      />
+    </div>
   </div>
 </div>
